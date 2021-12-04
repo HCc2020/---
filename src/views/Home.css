@@ -43,7 +43,7 @@
 }
 
 .left-two {
-    height: 25%;
+    height: 33%;
     background-size: 100% 100%;
     margin-bottom: 1.57%;
     display: flex;
@@ -453,7 +453,7 @@
     position: absolute;
     z-index: 999;
     left: 108px;
-    top: 60px;
+    top: 90px;
 }
 
 .oldInfo_right {

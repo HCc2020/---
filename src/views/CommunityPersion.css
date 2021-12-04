@@ -1005,3 +1005,141 @@ img {
     text-align: center;
     transform: translate(-50%, -50%);
 }
+.map_box {
+    height: 88.5%;
+    position: relative;
+}
+
+.street_map_box {
+    height: 88.5%;
+    position: relative;
+}
+
+.street_init {
+    position: absolute;
+    left: 50%;
+    top: 99px;
+    transform: translate(-50%);
+    width: 701px;
+}
+
+.street_name {
+    font-size: 12px;
+    color: #fff;
+    position: absolute;
+    z-index: 1009;
+    transform: scale(0.8, 0.8);
+}
+
+.init {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%);
+    width: 585px;
+}
+
+.ShangXi {
+    position: absolute;
+    left: 60px;
+    top: 255px;
+    /* position: relative; */
+}
+
+.address_name:hover+.address_img {
+    opacity: 1 !important;
+}
+
+/* .address_img:hover {
+    opacity: 1 !important;
+} */
+
+.BeiYuan {
+    position: absolute;
+    left: 278px;
+    top: 267px;
+}
+
+.DaChen {
+    position: absolute;
+    left: 369px;
+    top: -7px;
+}
+
+.ChouJiang {
+    position: absolute;
+    left: 254px;
+    top: 358px;
+}
+
+.ChiAn {
+    position: absolute;
+    left: 151px;
+    top: 521px;
+}
+
+.FouTang {
+    position: absolute;
+    left: 214px;
+    top: 418px;
+}
+
+.WenTing {
+    position: absolute;
+    left: 174px;
+    top: 370px;
+}
+
+.ChengXi {
+    position: absolute;
+    left: 189px;
+    top: 238px;
+}
+
+.HouZhai {
+    position: absolute;
+    left: 261px;
+    /* 222 */
+    top: 144px;
+    /* 179 */
+}
+
+.SuXi {
+    position: absolute;
+    left: 379px;
+    top: 126px;
+}
+
+.NianSanLi {
+    position: absolute;
+    left: 473px;
+    top: 198px;
+}
+
+.JiangDong {
+    position: absolute;
+    left: 333px;
+    top: 308px;
+}
+
+.ChouCheng {
+    position: absolute;
+    left: 359px;
+    top: 292px;
+}
+
+.FuTian {
+    position: absolute;
+    left: 386px;
+    top: 210px;
+}
+
+.address_name {
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    z-index: 1000;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}

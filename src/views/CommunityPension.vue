@@ -89,10 +89,111 @@
             </div>
           </div>
         </div>
-        <div class="map_box">
+        <!-- <div class="map_box">
+          <img class="init" :src="require('../assets/map/init.png')" alt="">
+          <div class="ShangXi">
+            <div class="address_name" @click="toCamera(0,$event)">
+              <img :src="require('../assets/map/point.png')" alt="">
+              <div>上溪镇</div>
+            </div>
+            <img class="address_img" style="opacity:0;" :src="require('../assets/map/上溪镇（选中）.png')" alt="">
+          </div>
+          <div class="FouTang">
+            <div class="address_name" @click="toCamera(1,$event)">
+              <img :src="require('../assets/map/point.png')" alt="">
+              <div>佛堂镇</div>
+            </div>
+            <img class="address_img" style="opacity:0;" :src="require('../assets/map/佛堂镇（选中）.png')" alt="">
+          </div>
+          <div class="BeiYuan">
+            <div class="address_name" @click="toCamera(2,$event)">
+              <img :src="require('../assets/map/point.png')" alt="">
+              <div>北苑街道</div>
+            </div>
+            <img class="address_img" style="opacity:0;" :src="require('../assets/map/北苑街道（选中）.png')" alt="">
+          </div>
+          <div class="HouZhai">
+            <div class="address_name" @click="toCamera(3,$event)"><img :src="require('../assets/map/point.png')" alt="">
+              <div>后宅街道</div>
+            </div>
+            <img class="address_img" style="opacity:0;" :src="require('../assets/map/后宅街道（选中）.png')" alt="">
+          </div>
+          <div class="ChengXi">
+            <div class="address_name" @click="toCamera(4,$event)"><img :src="require('../assets/map/point.png')" alt="">
+              <div>城西街道</div>
+            </div>
+            <img class="address_img" style="opacity:0;" :src="require('../assets/map/城西街道（选中）.png')" alt="">
+          </div>
+          <div class="DaChen">
+            <div class="address_name" @click="toCamera(5,$event)"><img :src="require('../assets/map/point.png')" alt="">
+              <div>大陈镇</div>
+            </div>
+            <img class="address_img" style="opacity:0;" :src="require('../assets/map/大陈镇（选中）.png')" alt="">
+          </div>
+          <div class="WenTing">
+            <div class="address_name" @click="toCamera(6,$event)"><img :src="require('../assets/map/point.png')" alt="">
+              <div>文亭镇</div>
+            </div>
+            <img class="address_img" style="opacity:0;" :src="require('../assets/map/文亭镇（选中）.png')" alt="">
+          </div>
+          <div class="JiangDong">
+            <div class="address_name" @click="toCamera(7,$event)"><img :src="require('../assets/map/point.png')" alt="">
+              <div>江东街道</div>
+            </div>
+            <img class="address_img" style="opacity:0;" :src="require('../assets/map/江东街道（选中）.png')" alt="">
+          </div>
+          <div class="NianSanLi">
+            <div class="address_name" @click="toCamera(8,$event)"><img :src="require('../assets/map/point.png')" alt="">
+              <div>甘三里街道</div>
+            </div>
+            <img class="address_img" style="opacity:0;" :src="require('../assets/map/甘三里街道（选中）.png')" alt="">
+          </div>
+
+          <div class="FuTian">
+            <div class="address_name" @click="toCamera(9,$event)"><img :src="require('../assets/map/point.png')" alt="">
+              <div>福田街道</div>
+            </div>
+            <img class="address_img" style="opacity:0;" :src="require('../assets/map/福田街道（选中）.png')" alt="">
+          </div>
+          <div class="ChouCheng">
+            <div class="address_name" @click="toCamera(10,$event)"><img :src="require('../assets/map/point.png')"
+                alt="">
+              <div>稠城街道</div>
+            </div>
+            <img class="address_img" style="opacity:0;" :src="require('../assets/map/稠城街道（选中）.png')" alt="">
+          </div>
+          <div class="ChouJiang">
+            <div class="address_name" @click="toCamera(11,$event)"><img :src="require('../assets/map/point.png')"
+                alt="">
+              <div>稠江街道</div>
+            </div>
+            <img class="address_img" style="opacity:0;" :src="require('../assets/map/稠江街道（选中）.png')" alt="">
+          </div>
+
+          <div class="SuXi">
+            <div class="address_name" @click="toCamera(12,$event)"><img :src="require('../assets/map/point.png')"
+                alt="">
+              <div>苏溪镇</div>
+            </div>
+            <img class="address_img" style="opacity:0;" :src="require('../assets/map/苏溪镇（选中）.png')" alt="">
+          </div>
+          <div class="ChiAn">
+            <div class="address_name" @click="toCamera(13,$event)"><img :src="require('../assets/map/point.png')"
+                alt="">
+              <div>赤岸镇</div>
+            </div>
+            <img class="address_img" style="opacity:0;" :src="require('../assets/map/赤岸镇（选中）.png')" alt="">
+          </div>
+        </div> -->
+        <div v-show="!isStreet" class="map_box">
           <img class="init" :src="require('../assets/map/init.png')" alt="" />
           <div class="ShangXi">
-            <div class="address_name" @click="toCamera(0, $event)">
+            <div
+              class="address_name"
+              @click="toStreet($event)"
+              @mouseleave="hideModal"
+              @mouseover="toCamera(0, $event)"
+            >
               <img :src="require('../assets/map/point.png')" alt="" />
               <div>上溪镇</div>
             </div>
@@ -104,7 +205,12 @@
             />
           </div>
           <div class="FouTang">
-            <div class="address_name" @click="toCamera(1, $event)">
+            <div
+              class="address_name"
+              @click="toStreet($event)"
+              @mouseleave="hideModal"
+              @mouseover="toCamera(1, $event)"
+            >
               <img :src="require('../assets/map/point.png')" alt="" />
               <div>佛堂镇</div>
             </div>
@@ -116,7 +222,12 @@
             />
           </div>
           <div class="BeiYuan">
-            <div class="address_name" @click="toCamera(2, $event)">
+            <div
+              class="address_name"
+              @click="toStreet($event)"
+              @mouseleave="hideModal"
+              @mouseover="toCamera(2, $event)"
+            >
               <img :src="require('../assets/map/point.png')" alt="" />
               <div>北苑街道</div>
             </div>
@@ -128,7 +239,12 @@
             />
           </div>
           <div class="HouZhai">
-            <div class="address_name" @click="toCamera(3, $event)">
+            <div
+              class="address_name"
+              @click="toStreet($event)"
+              @mouseleave="hideModal"
+              @mouseover="toCamera(3, $event)"
+            >
               <img :src="require('../assets/map/point.png')" alt="" />
               <div>后宅街道</div>
             </div>
@@ -140,7 +256,12 @@
             />
           </div>
           <div class="ChengXi">
-            <div class="address_name" @click="toCamera(4, $event)">
+            <div
+              class="address_name"
+              @click="toStreet($event)"
+              @mouseleave="hideModal"
+              @mouseover="toCamera(4, $event)"
+            >
               <img :src="require('../assets/map/point.png')" alt="" />
               <div>城西街道</div>
             </div>
@@ -152,7 +273,12 @@
             />
           </div>
           <div class="DaChen">
-            <div class="address_name" @click="toCamera(5, $event)">
+            <div
+              class="address_name"
+              @click="toStreet($event)"
+              @mouseleave="hideModal"
+              @mouseover="toCamera(5, $event)"
+            >
               <img :src="require('../assets/map/point.png')" alt="" />
               <div>大陈镇</div>
             </div>
@@ -164,7 +290,12 @@
             />
           </div>
           <div class="WenTing">
-            <div class="address_name" @click="toCamera(6, $event)">
+            <div
+              class="address_name"
+              @click="toStreet($event)"
+              @mouseleave="hideModal"
+              @mouseover="toCamera(6, $event)"
+            >
               <img :src="require('../assets/map/point.png')" alt="" />
               <div>文亭镇</div>
             </div>
@@ -176,7 +307,12 @@
             />
           </div>
           <div class="JiangDong">
-            <div class="address_name" @click="toCamera(7, $event)">
+            <div
+              class="address_name"
+              @click="toStreet($event)"
+              @mouseleave="hideModal"
+              @mouseover="toCamera(7, $event)"
+            >
               <img :src="require('../assets/map/point.png')" alt="" />
               <div>江东街道</div>
             </div>
@@ -188,7 +324,12 @@
             />
           </div>
           <div class="NianSanLi">
-            <div class="address_name" @click="toCamera(8, $event)">
+            <div
+              class="address_name"
+              @click="toStreet($event)"
+              @mouseleave="hideModal"
+              @mouseover="toCamera(8, $event)"
+            >
               <img :src="require('../assets/map/point.png')" alt="" />
               <div>甘三里街道</div>
             </div>
@@ -201,7 +342,12 @@
           </div>
 
           <div class="FuTian">
-            <div class="address_name" @click="toCamera(9, $event)">
+            <div
+              class="address_name"
+              @click="toStreet($event)"
+              @mouseleave="hideModal"
+              @mouseover="toCamera(9, $event)"
+            >
               <img :src="require('../assets/map/point.png')" alt="" />
               <div>福田街道</div>
             </div>
@@ -213,7 +359,12 @@
             />
           </div>
           <div class="ChouCheng">
-            <div class="address_name" @click="toCamera(10, $event)">
+            <div
+              class="address_name"
+              @click="toStreet($event)"
+              @mouseleave="hideModal"
+              @mouseover="toCamera(10, $event)"
+            >
               <img :src="require('../assets/map/point.png')" alt="" />
               <div>稠城街道</div>
             </div>
@@ -225,7 +376,12 @@
             />
           </div>
           <div class="ChouJiang">
-            <div class="address_name" @click="toCamera(11, $event)">
+            <div
+              class="address_name"
+              @click="toStreet($event)"
+              @mouseleave="hideModal"
+              @mouseover="toCamera(11, $event)"
+            >
               <img :src="require('../assets/map/point.png')" alt="" />
               <div>稠江街道</div>
             </div>
@@ -236,9 +392,13 @@
               alt=""
             />
           </div>
-
           <div class="SuXi">
-            <div class="address_name" @click="toCamera(12, $event)">
+            <div
+              class="address_name"
+              @click="toStreet($event)"
+              @mouseleave="hideModal"
+              @mouseover="toCamera(12, $event)"
+            >
               <img :src="require('../assets/map/point.png')" alt="" />
               <div>苏溪镇</div>
             </div>
@@ -250,7 +410,12 @@
             />
           </div>
           <div class="ChiAn">
-            <div class="address_name" @click="toCamera(13, $event)">
+            <div
+              class="address_name"
+              @click="toStreet($event)"
+              @mouseleave="hideModal"
+              @mouseover="toCamera(13, $event)"
+            >
               <img :src="require('../assets/map/point.png')" alt="" />
               <div>赤岸镇</div>
             </div>
@@ -260,6 +425,477 @@
               :src="require('../assets/map/赤岸镇（选中）.png')"
               alt=""
             />
+          </div>
+        </div>
+        <div v-show="isStreet" class="street_map_box">
+          <img class="street_init" :src="streetImg" alt="" />
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 521px; top: 491px"
+          >
+            南山社区
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 563px; top: 311px"
+          >
+            大元村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 601px; top: 223px"
+          >
+            石塔头村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 657px; top: 217px"
+          >
+            观音塘村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 654px; top: 185px"
+          >
+            白莲塘村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 657px; top: 158px"
+          >
+            船埠头村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 635px; top: 112px"
+          >
+            大湖头村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 591px; top: 121px"
+          >
+            下湾村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 609px; top: 169px"
+          >
+            平畴村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 571px; top: 175px"
+          >
+            新兴村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 572px; top: 209px"
+          >
+            后儿村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 553px; top: 228px"
+          >
+            南山坑村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 522px; top: 140px"
+          >
+            东苑社区
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 531px; top: 209px"
+          >
+            东新屋村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 509px; top: 222px"
+          >
+            青南村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 520px; top: 233px"
+          >
+            流赐社区
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 499px; top: 279px"
+          >
+            西塘村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 486px; top: 255px"
+          >
+            金星村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 480px; top: 153px"
+          >
+            商博社区
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 425px; top: 164px"
+          >
+            下王村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 399px; top: 216px"
+          >
+            东州社区
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 385px; top: 316px"
+          >
+            盘溪社区
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 336px; top: 211px"
+          >
+            五爱社区
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 332px; top: 254px"
+          >
+            鸡鸣山社区
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 265px; top: 266px"
+          >
+            临江社区
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 298px; top: 320px"
+          >
+            商苑社区
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 234px; top: 299px"
+          >
+            江南社区
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 259px; top: 355px"
+          >
+            南苑社区
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 207px; top: 337px"
+          >
+            下傅村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 220px; top: 386px"
+          >
+            黎明湖社区
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 263px; top: 442px"
+          >
+            张村村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 357px; top: 396px"
+          >
+            青岩傅村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 389px; top: 456px"
+          >
+            上麻车村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 325px; top: 488px"
+          >
+            下麻车村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 234px; top: 461px"
+          >
+            潘村村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 219px; top: 509px"
+          >
+            徐村村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 153px; top: 392px"
+          >
+            钓鱼矶社区
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 164px; top: 439px"
+          >
+            望湖社区
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 173px; top: 479px"
+          >
+            马村村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 155px; top: 518px"
+          >
+            毛店山脚村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 200px; top: 562px"
+          >
+            东上村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 120px; top: 514px"
+          >
+            后园村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 89px; top: 392px"
+          >
+            塔下洲社区
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 90px; top: 442px"
+          >
+            后房村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 51px; top: 450px"
+          >
+            毛店村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 68px; top: 481px"
+          >
+            西赵村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 53px; top: 497px"
+          >
+            红星村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 23px; top: 487px"
+          >
+            江南村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 18px; top: 525px"
+          >
+            永和村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 76px; top: 515px"
+          >
+            前流村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 66px; top: 538px"
+          >
+            后店村
+          </div>
+          <div
+            class="street_name"
+            @click="toStreetDetail($event)"
+            @mouseleave="streetImgInit()"
+            @mouseover="showStreetInfo($event)"
+            style="left: 125px; top: 540px"
+          >
+            许宅村
           </div>
         </div>
       </div>
@@ -346,6 +982,8 @@ export default {
   },
   data() {
     return {
+      isStreet: false,
+      streetImg: require("../assets/jiangdong/江东街道.png"),
       center: [120.075679, 29.306296],
       position: [120.075679, 29.306296],
       zoom: 16,
@@ -388,17 +1026,17 @@ export default {
             {
               name: "柳二居家养老餐盘摆放处",
               address:
-                "http://112.12.16.229:7086/live/cameraid/33078201001316157947@005@002%240/substream/1.m3u8",
+                "http://112.12.16.229:7086/live/cameraid/33078201001316157947@005@001@003%240/substream/1.m3u8",
             },
             {
               name: "柳二居家养老厨房",
               address:
-                "http://112.12.16.229:7086/live/cameraid/33078201001310306901@005@002%240/substream/1.m3u8",
+                "http://112.12.16.229:7086/live/cameraid/33078201001310306901@005@001@003%240/substream/1.m3u8",
             },
             {
               name: "柳二居家养老用餐区",
               address:
-                "http://112.12.16.229:7086/live/cameraid/33078201001313253015@005@002%240/substream/1.m3u8",
+                "http://112.12.16.229:7086/live/cameraid/33078201001313253015@005@001@003%240/substream/1.m3u8",
             },
           ],
         },
@@ -427,32 +1065,32 @@ export default {
             {
               name: "鸡鸣山居家养老餐盘摆放处",
               address:
-                "http://112.12.16.229:7086/live/cameraid/33078201001314143920@005@002%240/substream/1.m3u8",
+                "http://112.12.16.229:7086/live/cameraid/33078201001314143920@005@001@003%240/substream/1.m3u8",
             },
             {
               name: "鸡鸣山居家养老厨房",
               address:
-                "http://112.12.16.229:7086/live/cameraid/33078201001318504521@005@002%240/substream/1.m3u8",
+                "http://112.12.16.229:7086/live/cameraid/33078201001318504521@005@001@003%240/substream/1.m3u8",
             },
             {
               name: "鸡鸣山居家养老用餐区",
               address:
-                "http://112.12.16.229:7086/live/cameraid/33078201001315775536@005@002%240/substream/1.m3u8",
+                "http://112.12.16.229:7086/live/cameraid/33078201001315775536@005@001@003%240/substream/1.m3u8",
             },
             {
               name: "西谷居家养老厨房",
               address:
-                "http://112.12.16.229:7086/live/cameraid/33078201001311170234@005@002%240/substream/1.m3u8",
+                "http://112.12.16.229:7086/live/cameraid/33078201001311170234@005@001@003%240/substream/1.m3u8",
             },
             {
               name: "西谷居家养老餐盘摆放处",
               address:
-                "http://112.12.16.229:7086/live/cameraid/33078201001313917809@005@002%240/substream/1.m3u8",
+                "http://112.12.16.229:7086/live/cameraid/33078201001313917809@005@001@003%240/substream/1.m3u8",
             },
             {
               name: "西谷居家养老用餐区",
               address:
-                "http://112.12.16.229:7086/live/cameraid/33078201001318410745@005@002%240/substream/1.m3u8",
+                "http://112.12.16.229:7086/live/cameraid/33078201001318410745@005@001@003%240/substream/1.m3u8",
             },
           ],
         },
@@ -478,14 +1116,54 @@ export default {
     };
   },
   methods: {
+    showStreetInfo(e) {
+      var name = e.currentTarget.innerText;
+      this.streetImg = require("../assets/jiangdong/" + name + ".png");
+    },
+    streetImgInit() {
+      this.streetImg = require("../assets/jiangdong/江东街道.png");
+    },
+    toStreetDetail(event) {
+      this.x = String(event.clientX / this.xScale + 10);
+      this.y = String(event.clientY / this.yScale + 10);
+      this.dialogType = "食堂摄像地址";
+      var streetName = event.currentTarget.innerText;
+      switch (streetName) {
+        case "鸡鸣山社区":
+          this.dialogData = {
+            cameraAddress: [
+              {
+                name: "鸡鸣山居家养老餐盘摆放处",
+                address:
+                  "http://112.12.16.229:7086/live/cameraid/33078201001314143920@005@001@003%240/substream/1.m3u8",
+              },
+              {
+                name: "鸡鸣山居家养老厨房",
+                address:
+                  "http://112.12.16.229:7086/live/cameraid/33078201001318504521@005@001@003%240/substream/1.m3u8",
+              },
+              {
+                name: "鸡鸣山居家养老用餐区",
+                address:
+                  "http://112.12.16.229:7086/live/cameraid/33078201001315775536@005@001@003%240/substream/1.m3u8",
+              },
+            ],
+          };
+          break;
+        default:
+          console.log("出错了");
+      }
+
+      this.show = true;
+    },
     hideModal() {
       // 取消弹窗回调
       this.show = false;
     },
     toDetail(index, event) {
       console.log(event.currentTarget);
-      this.x = event.clientX / this.xScale;
-      this.y = event.clientY / this.yScale;
+      this.x = String(event.clientX / this.xScale + 10);
+      this.y = String(event.clientY / this.yScale + 10);
       var obj = this.marqueeList[index];
       this.dialogType = "人脸";
       this.dialogData = {
@@ -493,10 +1171,21 @@ export default {
       };
       this.show = true;
     },
+    toStreet(event) {
+      console.log(event.currentTarget.children[1].innerText);
+      var streetName = event.currentTarget.children[1].innerText;
+      switch (streetName) {
+        case "江东街道":
+          this.isStreet = true;
+          break;
+        default:
+          console.log("出错了");
+      }
+    },
     toCamera(index, event) {
       console.log(event.currentTarget);
-      this.x = event.clientX / this.xScale;
-      this.y = event.clientY / this.yScale;
+      this.x = String(event.clientX / this.xScale + 10);
+      this.y = String(event.clientY / this.yScale);
       var obj = this.streetInfo[index];
       this.dialogType = "食堂摄像地址";
       this.dialogData = obj;
@@ -538,7 +1227,7 @@ export default {
       this.StreetEatNumber();
       this.DiningpointSatisfactionContrast();
       this.FavoriteDishRank();
-      this.subsidiesInfo();
+      this.subsidiesInfo()
     },
     subsidiesInfo() {
       var res = {
@@ -617,330 +1306,6 @@ export default {
         series: [
           {
             name: "资金补贴额度",
-            type: "bar",
-            barWidth: "30%",
-            data: needNum,
-            itemStyle: {
-              normal: {
-                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                  {
-                    offset: 0,
-                    color: "#A82DFF",
-                  },
-                  {
-                    offset: 1,
-                    color: "#0072FF",
-                  },
-                ]),
-              },
-            },
-          },
-        ],
-      };
-      myChart.setOption(option);
-    },
-    DiningpointSatisfactionContrast() {
-      var res = [
-        {
-          value: "548",
-          content: "1",
-          x: "福田",
-          y: "548",
-        },
-        {
-          value: "1066",
-          content: "2",
-          x: "上溪",
-          y: "2742",
-        },
-        {
-          value: "877",
-          content: "3",
-          x: "稠江",
-          y: "3290",
-        },
-        {
-          value: "566",
-          content: "4",
-          x: "大陈",
-          y: "1644",
-        },
-        {
-          value: "709",
-          content: "5",
-          x: "廿三里",
-          y: "2192",
-        },
-        {
-          value: "867",
-          content: "6",
-          x: "稠城",
-          y: "3838",
-        },
-        {
-          value: "855",
-          content: "7",
-          x: "城西",
-          y: "1726",
-        },
-        {
-          value: "794",
-          content: "8",
-          x: "苏溪",
-          y: "2356",
-        },
-        {
-          value: "655",
-          content: "9",
-          x: "赤岸",
-          y: "2088",
-        },
-        {
-          value: "788",
-          content: "10",
-          x: "义亭",
-          y: "2165",
-        },
-        {
-          value: "877",
-          content: "11",
-          x: "江东",
-          y: "1564",
-        },
-        {
-          value: "1108",
-          content: "12",
-          x: "北苑",
-          y: "1108",
-        },
-        {
-          value: "1088",
-          content: "13",
-          x: "后宅",
-          y: "3068",
-        },
-        {
-          value: "999",
-          content: "14",
-          x: "佛堂",
-          y: "1996",
-        },
-        {
-          value: "709",
-          content: "15",
-          x: "佛堂",
-          y: "1996",
-        },
-        {
-          value: "766",
-          content: "16",
-          x: "佛堂",
-          y: "1996",
-        },
-        {
-          value: "399",
-          content: "17",
-          x: "佛堂",
-          y: "1996",
-        },
-        {
-          value: "666",
-          content: "18",
-          x: "佛堂",
-          y: "1996",
-        },
-        {
-          value: "555",
-          content: "19",
-          x: "佛堂",
-          y: "1996",
-        },
-        {
-          value: "777",
-          content: "20",
-          x: "佛堂",
-          y: "1996",
-        },
-        {
-          value: "713",
-          content: "21",
-          x: "佛堂",
-          y: "1996",
-        },
-        {
-          value: "913",
-          content: "22",
-          x: "佛堂",
-          y: "1996",
-        },
-        {
-          value: "713",
-          content: "23",
-          x: "佛堂",
-          y: "1996",
-        },
-        {
-          value: "379",
-          content: "24",
-          x: "佛堂",
-          y: "1996",
-        },
-        {
-          value: "458",
-          content: "25",
-          x: "佛堂",
-          y: "1996",
-        },
-        {
-          value: "678",
-          content: "26",
-          x: "佛堂",
-          y: "1996",
-        },
-        {
-          value: "567",
-          content: "27",
-          x: "佛堂",
-          y: "1996",
-        },
-        {
-          value: "708",
-          content: "28",
-          x: "佛堂",
-          y: "1996",
-        },
-        {
-          value: "1213",
-          content: "29",
-          x: "佛堂",
-          y: "1996",
-        },
-        {
-          value: "1412",
-          content: "30",
-          x: "佛堂",
-          y: "1996",
-        },
-      ];
-      var xAxisName = [];
-      var personNum = [];
-      res.forEach(function (item, index) {
-        xAxisName.push(item.x);
-        personNum.push(item.value);
-      });
-      let myChart = echarts.init(
-        document.getElementById("DiningpointSatisfactionContrast")
-      );
-      var option = {
-        xAxis: {
-          type: "category",
-          data: xAxisName,
-        },
-        yAxis: {
-          type: "value",
-        },
-        series: [
-          {
-            data: personNum,
-            type: "line",
-          },
-        ],
-      };
-      myChart.setOption(option);
-    },
-    FavoriteDishRank() {
-      var res = {
-        errorMsg: "",
-        data: [
-          {
-            name: "红烧排骨",
-            serviceTimes: 989,
-          },
-          {
-            name: "肉饼蒸蛋",
-            serviceTimes: 808,
-          },
-          {
-            name: "水煮鱼",
-            serviceTimes: 724,
-          },
-          {
-            name: "虾仁炒蛋",
-            serviceTimes: 652,
-          },
-          {
-            name: "番茄炒蛋",
-            serviceTimes: 642,
-          },
-          {
-            name: "葫芦丝瓜",
-            serviceTimes: 552,
-          },
-          {
-            name: "生炒鸡块",
-            serviceTimes: 498,
-          },
-          {
-            name: "鲜笋鸭肉",
-            serviceTimes: 432,
-          },
-          {
-            name: "油爆河虾",
-            serviceTimes: 399,
-          },
-          {
-            name: "东坡焖肉",
-            serviceTimes: 375,
-          },
-        ],
-        success: true,
-      };
-      var data = res.data;
-      var xAxisName = [];
-      var needNum = [];
-      data.forEach(function (item, index) {
-        xAxisName.push(item.name);
-        needNum.push(item.serviceTimes);
-      });
-      // 基于准备好的dom，初始化echarts实例
-      let myChart = echarts.init(document.getElementById("FavoriteDishRank"));
-      // 绘制图表
-      var option = {
-        tooltip: {
-          trigger: "axis",
-          axisPointer: {
-            type: "shadow",
-          },
-        },
-        xAxis: {
-          type: "category",
-
-          data: xAxisName,
-          axisLabel: {
-            textStyle: {
-              color: "#ffffff",
-            },
-            interval: 0, //强制文字产生间隔
-            rotate: 45, //文字逆时针旋转45°
-            textStyle: {
-              //文字样式
-              color: "#ffffff",
-              fontSize: 10,
-              fontFamily: "Microsoft YaHei",
-            },
-          },
-        },
-        yAxis: {
-          type: "value",
-          axisLabel: {
-            textStyle: {
-              color: "#ffffff",
-            },
-          },
-        },
-        series: [
-          {
-            name: "服务需求数量",
             type: "bar",
             barWidth: "30%",
             data: needNum,
